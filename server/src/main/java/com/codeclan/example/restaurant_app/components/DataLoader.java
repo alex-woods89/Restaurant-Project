@@ -29,10 +29,10 @@ public class DataLoader implements ApplicationRunner {
 
     public void run(ApplicationArguments args) {
 
-        Customer customer1 = new Customer("James Oliver", 1);
+        Customer customer1 = new Customer("James Oliver", "james@example.com", "1234 567 8910");
         customerRepository.save(customer1);
 
-        Customer customer2 = new Customer("Godfreya Richards", 4);
+        Customer customer2 = new Customer("Godfreya Richards", "godfreya@example.com", "1098 765 4321");
         customerRepository.save(customer2);
 
         Seating seating1 = new Seating(1, 57);
@@ -41,10 +41,10 @@ public class DataLoader implements ApplicationRunner {
         Seating seating2 = new Seating(4, 12);
         seatingRepository.save(seating2);
 
-        Booking booking1 = new Booking("2019-11-01", "19:00", customer1, seating1);
+        Booking booking1 = new Booking("2019-11-01", "19:00", 1, "allergic to pulses", customer1, seating1);
         bookingRepository.save(booking1);
 
-        Booking booking2 = new Booking("2019-11-03", "20:00", customer2, seating2);
+        Booking booking2 = new Booking("2019-11-03", "20:00", 4, "fourth member of the party is arriving approx half an hour late", customer2, seating2);
         bookingRepository.save(booking2);
 
     }

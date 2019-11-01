@@ -17,16 +17,20 @@ public class Customer {
     @Column(name="name")
     private String name;
 
-    @Column(name="party_size")
-    private int partySize;
+    @Column(name="email")
+    private String email;
+
+    @Column(name="phone")
+    private String phone;
 
     @JsonIgnore
     @OneToMany(mappedBy = "customer", fetch=FetchType.LAZY)
     private List<Booking> bookings;
 
-    public Customer(String name, int partySize) {
+    public Customer(String name, String email, String phone) {
         this.name = name;
-        this.partySize = partySize;
+        this.email = email;
+        this.phone = phone;
         this.bookings = new ArrayList<Booking>();
     }
 
@@ -49,12 +53,20 @@ public class Customer {
         this.name = name;
     }
 
-    public int getPartySize() {
-        return partySize;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPartySize(int partySize) {
-        this.partySize = partySize;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public List<Booking> getBookings() {
