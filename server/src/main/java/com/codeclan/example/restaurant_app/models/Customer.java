@@ -1,10 +1,10 @@
 package com.codeclan.example.restaurant_app.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="customers")
@@ -22,7 +22,7 @@ public class Customer {
 
     @JsonIgnore
     @OneToMany(mappedBy = "customer", fetch=FetchType.LAZY)
-    private ArrayList<Booking> bookings;
+    private List<Booking> bookings;
 
     public Customer(String name, int partySize) {
         this.name = name;
@@ -57,11 +57,11 @@ public class Customer {
         this.partySize = partySize;
     }
 
-    public ArrayList<Booking> getBookings() {
+    public List<Booking> getBookings() {
         return bookings;
     }
 
-    public void setBookings(ArrayList<Booking> bookings) {
+    public void setBookings(List<Booking> bookings) {
         this.bookings = bookings;
     }
 }
