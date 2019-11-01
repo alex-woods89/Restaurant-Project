@@ -1,36 +1,35 @@
 package com.codeclan.example.restaurant_app.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 
 @Entity
-@Table(name="customers")
-public class Customer {
+@Table(name="seatings")
+public class Seating {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="name")
-    private String name;
+    @Column(name = "capacity")
+    private int capacity;
 
-    @Column(name="party_size")
-    private int partySize;
+    @Column(name = "table_number")
+    private int tableNumber;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "customer", fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = "seatings", fetch = FetchType.LAZY)
     private ArrayList<Booking> bookings;
 
-    public Customer(String name, int partySize) {
-        this.name = name;
-        this.partySize = partySize;
+    public Seating(int capacity, int tableNumber) {
+        this.capacity = capacity;
+        this.tableNumber = tableNumber;
         this.bookings = new ArrayList<Booking>();
     }
 
-    public Customer() {
+    public Seating() {
     }
 
     public Long getId() {
@@ -41,20 +40,20 @@ public class Customer {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public int getCapacity() {
+        return capacity;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 
-    public int getPartySize() {
-        return partySize;
+    public int getTableNumber() {
+        return tableNumber;
     }
 
-    public void setPartySize(int partySize) {
-        this.partySize = partySize;
+    public void setTableNumber(int tableNumber) {
+        this.tableNumber = tableNumber;
     }
 
     public ArrayList<Booking> getBookings() {
