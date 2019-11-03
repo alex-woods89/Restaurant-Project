@@ -24,4 +24,13 @@ class RestaurantAppApplicationTests {
 		assertEquals(booking1, seating1.getBookings().get(0));
 	}
 
+	@Test
+	void cannotAddBookingOverCapacity() {
+		Customer customer1 = new Customer("James Oliver", "james@example.com", "1234 567 8910");
+		Seating seating1 = new Seating(1, 57);
+		Booking booking2 = new Booking("2019-11-01", "19:00", 4, null, customer1, null);
+		seating1.addBooking(booking2);
+		assertEquals(0, seating1.getBookings().size());
+	}
+
 }
