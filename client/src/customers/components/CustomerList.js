@@ -11,7 +11,7 @@ const CustomerList = (props) => {
     }
 
     return(
-        <select id="customer-selected" onChange={handleChange}>
+        <select id="customer-selected" >
          {options}
         </select>
     )
