@@ -6,10 +6,9 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+@Configuration
 public class SpringGlobalConfig implements RepositoryRestConfigurer, WebMvcConfigurer {
 
-    @Configuration
-    public class SpringGlobalConfig {
 
         private static final String CORS_BASE_PATTERN = "/**";
         private static final String ALLOWED_ORIGINS = "*";
@@ -34,4 +33,4 @@ public class SpringGlobalConfig implements RepositoryRestConfigurer, WebMvcConfi
         }
     }
 
-}
+
