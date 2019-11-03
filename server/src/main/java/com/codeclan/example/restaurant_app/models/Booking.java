@@ -32,7 +32,7 @@ public class Booking {
 
     @JsonIgnoreProperties("booking")
     @ManyToOne
-    @JoinColumn(name="seating_id", nullable = false)
+    @JoinColumn(name="seating_id", nullable = true)
     private Seating seating;
 
     public Booking(String date, String time, int partySize, String notes, Customer customer, Seating seating) {
