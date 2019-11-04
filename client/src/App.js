@@ -1,12 +1,14 @@
 import React from 'react';
 import './App.css';
-import CustomerContainer from './containers/CustomerContainer'
+import Main from './Main';
 
 function App() {
   return (
     <div className="App">
       <h1>Restaurant App</h1>
-      <CustomerContainer />
+
+
+      <Main />
     </div>
   );
 
