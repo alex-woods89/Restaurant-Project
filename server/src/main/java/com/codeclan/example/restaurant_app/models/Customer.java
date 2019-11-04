@@ -32,6 +32,7 @@ public class Customer {
         this.email = email;
         this.phone = phone;
         this.bookings = new ArrayList<Booking>();
+        this.id = id;
     }
 
     public Customer() {
