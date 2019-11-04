@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import NavBar from './NavBar';
 import Home from './home/components/Home'
-import Booking from './bookings/components/Booking';
+import Booking from './containers/BookingContainer';
 import ErrorPage from './ErrorPage';
-import CustomerContainer from './customers/containers/CustomerContainer'
+import CustomerContainer from './containers/CustomerContainer'
 
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
