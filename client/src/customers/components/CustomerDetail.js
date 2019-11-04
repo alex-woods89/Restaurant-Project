@@ -1,12 +1,15 @@
-import React, {Component} from 'react'
-
-const CustomerDetail = (props) => {
+import React from 'react'
 
 
-    if(!props.customer) return null;
+const CustomerDetail = ({customer}) => {
+
+    if(!customer) return null;
     return (
         <div>
-           <p>{this.state.customer.name}</p>
+            <h2>Customer Details</h2>
+           <p>{customer.name}</p>
+           <p>{customer.phone}</p>
+           <p>{customer.email}</p>
         </div>
     )
 }
