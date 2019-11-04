@@ -1,17 +1,19 @@
-import React from 'react'
+import React, {Component} from 'react'
 
-const CustomerList = ({customers}) => {
+const CustomerList = (props) => {
 
-        const customersNames = customers.map((customer, index) => {
-            return <tr key={index}><td>{customer.name}</td></tr>
-        })
+    const options = props.customers.map((customer, index) => {
+    return <option value={customer.name} key={index}>{customer.name}</option>
+    })
+
+    function handleChange(event){
+        props.onCustomerSelected(event.target.value)
+    }
 
     return(
-        <div>
-           <table>
-               <tbody>{customersNames}</tbody>
-           </table>
-        </div>
+        <select id="customer-selected" >
+         {options}
+        </select>
     )
 }
 

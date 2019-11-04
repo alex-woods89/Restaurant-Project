@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import CustomerDetail from '../components/CustomerDetail'
 import CustomerList from '../components/CustomerList'
 import CustomerForm from '../components/CustomerForm';
-import CustomerSelector from '../components/CustomerSelector';
 
 class CustomerContainer extends Component{
   constructor(props){
@@ -12,7 +11,6 @@ class CustomerContainer extends Component{
           selectedCustomer: null
       }
       this.handleCustomerSubmit = this.handleCustomerSubmit.bind(this)
-      this.handleCustomerSelected = this.handleCustomerSelected.bind(this);
     }
     
 
@@ -22,8 +20,7 @@ class CustomerContainer extends Component{
         .then(data => this.setState({ customers: data._embedded.customers }))
       }
 
-      handleCustomerSelected(index){
-        const customer = this.state.customers[index]
+      handleCustomerSelected(customer){
         this.setState({selectedCustomer: customer})
       }
 
@@ -37,7 +34,6 @@ class CustomerContainer extends Component{
           return(
               <div>
                 <CustomerForm  onCustomerSubmit={this.handleCustomerSubmit}/>
-                <CustomerSelector customers={this.state.customers} onCustomerSelected={this.handleCustomerSelected}/>
               <CustomerList customers = {this.state.customers} onCustomerSelected={this.handleCustomerSelected}/>
               <CustomerDetail customer= {this.state.selectedCustomer} />
               </div>
