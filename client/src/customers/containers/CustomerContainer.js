@@ -10,7 +10,9 @@ class CustomerContainer extends Component{
           customers: [],
           selectedCustomer: null
       }
+      this.handleCustomerSubmit = this.handleCustomerSubmit.bind(this)
     }
+    
 
       componentDidMount(){
         fetch('http://localhost:8080/customers')
@@ -22,10 +24,16 @@ class CustomerContainer extends Component{
         this.setState({selectedCustomer: customer})
       }
 
+      handleCustomerSubmit(customer){
+        customer.id = Date.now();
+        const updatedCustomers = [...this.state.customers, customer]
+        this.setState({customers: updatedCustomers});
+      }
+
       render(){
           return(
               <div>
-                <CustomerForm />
+                <CustomerForm  onCustomerSubmit={this.handleCustomerSubmit}/>
               <CustomerList customers = {this.state.customers} onCustomerSelected={this.handleCustomerSelected}/>
               <CustomerDetail customer= {this.state.selectedCustomer} />
               </div>

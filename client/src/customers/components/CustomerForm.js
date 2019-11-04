@@ -31,6 +31,9 @@ class CustomerForm extends Component {
         const name = this.state.name.trim();
         const phone = this.state.phone.trim();
         const email = this.state.email.trim();
+        if (!name || !phone || !email) {
+            return
+          }
 
 
         this.props.onCustomerSubmit({name: name, phone: phone, email: email})
@@ -60,7 +63,7 @@ class CustomerForm extends Component {
                 />
                 <input
                 type="submit"
-                value="Post"
+                value="Add Customer"
                 />
 
             </form>
