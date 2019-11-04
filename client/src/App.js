@@ -6,9 +6,14 @@ function App() {
   return (
     <div className="App">
       <h1>Restaurant App</h1>
+
+
       <Main />
     </div>
   );
+
+
+  
 }
 
 export default App;
