@@ -28,6 +28,19 @@ class CustomerForm extends Component {
 
     handleSubmit(event){
         event.preventDefault();
+        fetch('http://localhost:8080/customers', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: this.state.name,
+            phone: this.state.phone,
+            email: this.state.email,
+          })
+      });
+
         const name = this.state.name.trim();
         const phone = this.state.phone.trim();
         const email = this.state.email.trim();
@@ -45,7 +58,7 @@ class CustomerForm extends Component {
     render(){
         return(
             <form className="customer-form" onSubmit={this.handleSubmit}>
-                <input 
+                <input
                 type="text"
                 placeholder="Your Name"
                 value={this.state.name}

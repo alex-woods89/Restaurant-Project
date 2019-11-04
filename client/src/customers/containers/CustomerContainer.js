@@ -14,7 +14,7 @@ class CustomerContainer extends Component{
       this.handleCustomerSubmit = this.handleCustomerSubmit.bind(this)
       this.handleCustomerSelected = this.handleCustomerSelected.bind(this);
     }
-    
+
 
       componentDidMount(){
         fetch('http://localhost:8080/customers')
