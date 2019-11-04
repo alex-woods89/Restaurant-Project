@@ -1,3 +1,4 @@
+
 package com.codeclan.example.restaurant_app.configs;
 
 import org.springframework.context.annotation.Configuration;
@@ -32,5 +33,4 @@ public class SpringGlobalConfig implements RepositoryRestConfigurer, WebMvcConfi
                     .allowedMethods(ALLOWED_METHODS);
         }
     }
-
 

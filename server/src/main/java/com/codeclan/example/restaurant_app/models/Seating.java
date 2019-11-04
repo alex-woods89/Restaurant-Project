@@ -64,4 +64,10 @@ public class Seating {
     public void setBookings(List<Booking> bookings) {
         this.bookings = bookings;
     }
+
+    public void addBooking(Booking booking) {
+        if (booking.getPartySize() <= this.getCapacity()) {
+            this.bookings.add(booking);
+        }
+    }
 }
