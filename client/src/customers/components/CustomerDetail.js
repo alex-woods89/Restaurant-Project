@@ -1,12 +1,13 @@
 import React, {Component} from 'react'
 
-const CustomerDetail = (props) => {
 
+const CustomerDetail = ({customer}) => {
 
-    if(!props.customer) return null;
+    if(!customer) return null;
     return (
         <div>
-           <p>{this.state.customer.name}</p>
+            <h2>Customer Details</h2>
+           <p>{customer.name}</p>
         </div>
     )
 }
