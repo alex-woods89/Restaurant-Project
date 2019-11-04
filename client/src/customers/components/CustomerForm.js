@@ -32,12 +32,12 @@ class CustomerForm extends Component {
           method: 'POST',
           headers: {
             Accept: 'application/json',
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json'
           },
           body: JSON.stringify({
             name: this.state.name,
             phone: this.state.phone,
-            email: this.state.email,
+            email: this.state.email
           })
       });
 
@@ -50,8 +50,7 @@ class CustomerForm extends Component {
 
 
         this.props.onCustomerSubmit({name: name, phone: phone, email: email})
-        //todo: update list of comments
-
+        
         this.setState({name: '', phone: '', email: ''});
     }
 

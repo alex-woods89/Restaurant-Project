@@ -13,6 +13,7 @@ class CustomerContainer extends Component{
       }
       this.handleCustomerSubmit = this.handleCustomerSubmit.bind(this)
       this.handleCustomerSelected = this.handleCustomerSelected.bind(this);
+      this.handleCustomerDelete = this.handleCustomerDelete.bind(this)
     }
 
 
@@ -33,13 +34,18 @@ class CustomerContainer extends Component{
         this.setState({customers: updatedCustomers});
       }
 
+      handleCustomerDelete(index){
+        const updatedCustomers = this.state.customers.splice(index, 1)
+        this.setState({customers: updatedCustomers})
+      }
+
       render(){
           return(
               <div>
                 <CustomerForm  onCustomerSubmit={this.handleCustomerSubmit}/>
                 <CustomerSelector customers={this.state.customers} onCustomerSelected={this.handleCustomerSelected}/>
               <CustomerList customers = {this.state.customers} onCustomerSelected={this.handleCustomerSelected}/>
-              <CustomerDetail customer= {this.state.selectedCustomer} />
+              <CustomerDetail customer= {this.state.selectedCustomer} onCustomerDelete={this.handleCustomerDelete} />
               </div>
           )
       }
