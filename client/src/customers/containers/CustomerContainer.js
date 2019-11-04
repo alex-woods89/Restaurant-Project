@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
-import CustomerDetail from '../customers/components/CustomerDetail'
-import CustomerList from '../customers/components/CustomerList'
+import CustomerDetail from '../components/CustomerDetail'
+import CustomerList from '../components/CustomerList'
+import CustomerForm from '../components/CustomerForm';
 
 class CustomerContainer extends Component{
   constructor(props){
@@ -24,6 +25,7 @@ class CustomerContainer extends Component{
       render(){
           return(
               <div>
+                <CustomerForm />
               <CustomerList customers = {this.state.customers} onCustomerSelected={this.handleCustomerSelected}/>
               <CustomerDetail customer= {this.state.selectedCustomer} />
               </div>
