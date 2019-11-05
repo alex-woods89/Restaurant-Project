@@ -1,4 +1,11 @@
 import React, {Component} from 'react'
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import InputLabel from '@material-ui/core/InputLabel';
+
+
 
 class NewBookingForm extends Component {
     constructor(props){
@@ -80,46 +87,54 @@ class NewBookingForm extends Component {
 
     render(){
         const customerOptions = this.props.customers.map((customer, index) => {
-             return <option value={customer.id} key={index}>{customer.name}</option>
+             return <MenuItem value={customer.id} key={index}>{customer.name}</MenuItem>
           })
           const seatingOptions = this.props.seatings.map((seating, index) => {
-            return <option value={seating.id} key={index}>{seating.tableNumber}</option>
+            return <MenuItem value={seating.id} key={index}>{seating.tableNumber}</MenuItem>
          })
         return(
             <form className="booking-form" onSubmit={this.handleSubmit}>
-                <input 
-                type="text"
+                <TextField
+                type="date"
                 placeholder="Choose a Date"
                 value={this.state.date}
                 onChange={this.handleDateChange}
-                />
-                <input 
-                type="text"
+                /><br></br>
+                <TextField
+                type="time"
                 placeholder="Choose a Time"
                 value={this.state.time}
                 onChange={this.handleTimeChange}
-                />
-                <input 
+                /><br></br>
+                <br></br>
+                <TextField
                 type="number"
                 placeholder="Number of customers"
                 value={this.state.partySize}
                 onChange={this.handlePartySizeChange}
+                
                 />
-                <input
-                type="text"
+                <br></br><br></br>
+                <TextField
                 placeholder="Add notes"
                 value={this.state.notes}
                 onChange={this.handleNotesChange}/>
-                <select id="customer-booking-selector" onChange={this.handleCustomerChange} value={this.state.customerId} >
-                <option disabled value="">Choose a customer...</option>
+                <br></br>
+                <InputLabel>Select a Customer</InputLabel>
+                
+                <Select id="customer-booking-selector" onChange={this.handleCustomerChange} value={this.state.customerId} >
+                <MenuItem></MenuItem>
                 {customerOptions}
-                </select>
-                <select id="seating-booking-selector" onChange={this.handleSeatingChange} value={this.state.seatingId} >
-                <option disabled value="" >Choose a seating...</option>
+                </Select>
+                <br></br>
+                <InputLabel>Select a Table</InputLabel>
+                <Select id="seating-booking-selector" onChange={this.handleSeatingChange} value={this.state.seatingId} >
+                <MenuItem >Choose a seating...</MenuItem>
                 {seatingOptions}
-                </select>
+                </Select>
+                <br></br>
 
-                <input type="submit" value="Make a booking"/>
+                <Button variant="contained" color="secondary" type="submit">Make A Booking</Button>
 
               
 

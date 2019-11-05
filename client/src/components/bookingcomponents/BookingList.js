@@ -1,4 +1,6 @@
 import React, {Component, Fragment} from 'react'
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
 
 class BookingList extends Component {
          constructor(props){
@@ -15,7 +17,7 @@ class BookingList extends Component {
         }
          render(){
         const options = this.props.bookings.map((booking, index) => {
-           return <option value={index} key={index}>{booking.date}  {booking.time}</option>
+           return <MenuItem value={index} key={index}>{booking.date}  {booking.time}</MenuItem>
         })
 
         
@@ -23,10 +25,10 @@ class BookingList extends Component {
     return(
       <Fragment>
         <label htmlFor="booking-selector" hidden>Select a Booking</label>
-        <select id="booking-selector" onChange={this.handleChange} value={this.state.selectedIndex} >
-      <option disabled value={-1}>Choose a booking...</option>
+        <Select id="booking-selector" onChange={this.handleChange} value={this.state.selectedIndex} >
+      <MenuItem disabled value={-1}>Choose a booking...</MenuItem>
       {options}
-    </select>
+    </Select>
     </Fragment>
     )
          }

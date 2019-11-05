@@ -1,5 +1,6 @@
 import React from 'react'
-import CustomerDelete from './CustomerDelete'
+import Button from '@material-ui/core/Button';
+
 
 
 const CustomerDetail = ({customer}) => {
@@ -11,8 +12,9 @@ const CustomerDetail = ({customer}) => {
            <p>{customer.name}</p>
            <p>{customer.phone}</p>
            <p>{customer.email}</p>
-           <button>Update Customer</button>
-           <CustomerDelete />
+           <Button variant="contained" color="secondary">Update Customer</Button>
+           <Button variant="contained" color="primary">Delete Customer</Button>
+
         </div>
     )
 }
