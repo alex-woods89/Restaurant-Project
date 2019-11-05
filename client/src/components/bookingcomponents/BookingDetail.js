@@ -12,6 +12,8 @@ const BookingDetail = ({booking}) => {
                 <li>Time: {booking.time}</li>
                 <li>Customer Name: {booking._embedded.customer.name}</li>
                 <li>Contact Details: {booking._embedded.customer.phone}</li>
+                <li>Table Number: {booking._embedded.seating.tableNumber}</li>
+                <li>Party Size: {booking.partySize}</li>
             </ul>
            
         </div>
