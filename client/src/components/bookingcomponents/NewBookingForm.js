@@ -62,20 +62,20 @@ class NewBookingForm extends Component {
                 seating: `http://localhost:8080/seatings/${this.state.seatingId}`
             })
         })
-
-        const date = this.state.date.trim();
-        const time = this.state.time.trim();
-        const partySize = this.state.partySize;
-        const notes = this.state.notes.trim();
-        const customer = this.state.customerId;
-        const seating = this.state.seatingId;
-        if(!date|| !time || !partySize || !notes || !customer || !seating){
-            return
-        }
-
-        this.props.onBookingSubmit({ date:date, time:time, partySize:partySize, notes:notes, customer:customer, seating:seating})
-        this.setState({date:"", time:"", partySize: null, notes: "", customer: {}, seating: {}})
-
+        .then(() => {
+          const date = this.state.date.trim();
+          const time = this.state.time.trim();
+          const partySize = this.state.partySize;
+          const notes = this.state.notes.trim();
+          const customer = this.state.customerId;
+          const seating = this.state.seatingId;
+          if(!date|| !time || !partySize || !notes || !customer || !seating){
+              return
+          }
+  
+          this.props.onBookingSubmit({ date:date, time:time, partySize:partySize, notes:notes, customer:customer, seating:seating})
+          this.setState({date:"", time:"", partySize: null, notes: "", customer: {}, seating: {}})
+        })
     }
 
     render(){

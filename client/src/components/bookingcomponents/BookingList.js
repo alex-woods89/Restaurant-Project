@@ -15,7 +15,6 @@ class BookingList extends Component {
         }
          render(){
         const options = this.props.bookings.map((booking, index) => {
-          console.log(booking)
            return <option value={index} key={index}>{booking.date}  {booking.time}</option>
         })
 

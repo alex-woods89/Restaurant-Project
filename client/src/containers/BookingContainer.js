@@ -16,11 +16,7 @@ class BookingContainer extends Component{
        this.handleBookingSelected = this.handleBookingSelected.bind(this)
    }
 
-   componentDidMount(){
-    fetch('http://localhost:8080/bookings')
-    .then(res => res.json())
-    .then(data => this.setState({ bookings: data._embedded.bookings }))
-  
+   componentDidMount(){  
     fetch('http://localhost:8080/customers')
     .then(res => res.json())
     .then(data => this.setState({ customers: data._embedded.customers }))
@@ -28,28 +24,34 @@ class BookingContainer extends Component{
     fetch('http://localhost:8080/seatings')
     .then(res => res.json())
     .then(data => this.setState({ seatings: data._embedded.seatings }))
+
+    fetch('http://localhost:8080/bookings')
+    .then(res => res.json())
+    .then(data => this.setState({ bookings: data._embedded.bookings }))
   }
 
    
 
   handleBookingSelected(index){
     const booking = this.state.bookings[index]
-    this.setState({selectedBooking: booking})
+    fetch(`http://localhost:8080/bookings/${booking.id}`)
+    .then(res => res.json())
+    .then(data => this.setState({selectedBooking: data}))
   }
 
   handleBookingSubmit(booking){
-    booking.id = Date.now();
-    const updatedbookings = [...this.state.bookings, booking]
-    this.setState({bookings: updatedbookings});
+    fetch('http://localhost:8080/bookings')
+    .then(res => res.json())
+    .then(data => this.setState({ bookings: data._embedded.bookings }))
   }
 
   render(){
       return(
           <div>
           <h3>Bookings</h3>
-          <NewBookingForm onBookingSubmit = {this.handleBookingSubmit} customers={this.state.customers} seatings={this.state.seatings}/>
-          <BookingList bookings={this.state.bookings} onBookingSelected={this.handleBookingSelected}/>
-          <BookingDetail booking={this.state.selectedBooking}/>
+          <NewBookingForm onBookingSubmit = {this.handleBookingSubmit} customers={this.state.customers} seatings ={ this.state.seatings}/>
+          <BookingList bookings = {this.state.bookings} onBookingSelected={this.handleBookingSelected}/>
+          <BookingDetail booking = {this.state.selectedBooking}/>
           </div>
       )
   }
