@@ -29,7 +29,7 @@ class Main extends Component {
                         <Route path="/customers" component={CustomerContainer}/>
                         <Route component={ErrorPage}/>
                     </Switch>
-    
+
                 </Fragment>
             </Router>
         )
