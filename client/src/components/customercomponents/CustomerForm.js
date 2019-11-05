@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Button from '@material-ui/core/Button';
 
 class CustomerForm extends Component {
     constructor(props){
@@ -73,10 +74,10 @@ class CustomerForm extends Component {
                 value={this.state.email}
                 onChange={this.handleEmailChange}
                 />
-                <input
-                type="submit"
-                value="Add Customer"
-                />
+                <Button variant="contained" color="secondary"
+                type="submit">
+                Add Customer
+                </Button>
 
             </form>
         )
