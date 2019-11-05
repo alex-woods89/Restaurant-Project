@@ -6,7 +6,7 @@ class NewBookingForm extends Component {
         this.state = {
             date: "",
             time: "",
-            partySize: null,
+            partySize: "",
             notes: "",
             customer: {},
             seating: {}
@@ -58,14 +58,14 @@ class NewBookingForm extends Component {
                 time: this.state.time,
                 partySize: this.state.partySize,
                 notes: this.state.notes,
-                customer: this.state.customer,
-                seating: this.state.seating
+                customer: `http://localhost:8080/customers/${this.state.customer}`,
+                seating: `http://localhost:8080/seatings/${this.state.seating}`
             })
         })
 
         const date = this.state.date.trim();
         const time = this.state.time.trim();
-        const partySize = this.state.partySize.trim();
+        const partySize = this.state.partySize;
         const notes = this.state.notes.trim();
         const customer = this.state.customer;
         const seating = this.state.seating;
@@ -80,10 +80,10 @@ class NewBookingForm extends Component {
 
     render(){
         const customerOptions = this.props.customers.map((customer, index) => {
-             return <option value={index} key={index}>{customer.name}</option>
+             return <option value={customer.id} key={index}>{customer.name}</option>
           })
           const seatingOptions = this.props.seatings.map((seating, index) => {
-            return <option value={index} key={index}>{seating.tableNumber}</option>
+            return <option value={seating.id} key={index}>{seating.tableNumber}</option>
          })
         return(
             <form className="booking-form" onSubmit={this.handleSubmit}>
@@ -96,11 +96,11 @@ class NewBookingForm extends Component {
                 <input 
                 type="text"
                 placeholder="Choose a Time"
-                value={this.state.timee}
+                value={this.state.time}
                 onChange={this.handleTimeChange}
                 />
                 <input 
-                type="text"
+                type="number"
                 placeholder="Number of customers"
                 value={this.state.partySize}
                 onChange={this.handlePartySizeChange}
