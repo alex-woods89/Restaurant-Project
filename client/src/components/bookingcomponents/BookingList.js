@@ -23,7 +23,8 @@ class BookingList extends Component {
 
     return(
       <Fragment>
-        <select id="booking-selector" onChange={this.handleChange} value={this.state.selectedIndex} defaultValue="default">
+        <label htmlFor="booking-selector" hidden>Select a Booking</label>
+        <select id="booking-selector" onChange={this.handleChange} value={this.state.selectedIndex} >
       <option disabled value={-1}>Choose a booking...</option>
       {options}
     </select>
