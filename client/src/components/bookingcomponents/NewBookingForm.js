@@ -8,8 +8,8 @@ class NewBookingForm extends Component {
             time: "",
             partySize: "",
             notes: "",
-            customer: {},
-            seating: {}
+            customerId: "",
+            seatingId: ""
         }
         this.handleDateChange = this.handleDateChange.bind(this) 
         this.handleTimeChange = this.handleTimeChange.bind(this) 
@@ -37,11 +37,11 @@ class NewBookingForm extends Component {
     }
 
     handleCustomerChange(event){
-        this.setState({customer: event.target.value})
+        this.setState({customerId: event.target.value})
     }
 
     handleSeatingChange(event){
-        this.setState({seating: event.target.value})
+        this.setState({seatingId: event.target.value})
     }
 
 
@@ -58,8 +58,8 @@ class NewBookingForm extends Component {
                 time: this.state.time,
                 partySize: this.state.partySize,
                 notes: this.state.notes,
-                customer: `http://localhost:8080/customers/${this.state.customer}`,
-                seating: `http://localhost:8080/seatings/${this.state.seating}`
+                customer: `http://localhost:8080/customers/${this.state.customerId}`,
+                seating: `http://localhost:8080/seatings/${this.state.seatingId}`
             })
         })
 
@@ -67,8 +67,8 @@ class NewBookingForm extends Component {
         const time = this.state.time.trim();
         const partySize = this.state.partySize;
         const notes = this.state.notes.trim();
-        const customer = this.state.customer;
-        const seating = this.state.seating;
+        const customer = this.state.customerId;
+        const seating = this.state.seatingId;
         if(!date|| !time || !partySize || !notes || !customer || !seating){
             return
         }
@@ -110,12 +110,12 @@ class NewBookingForm extends Component {
                 placeholder="Add notes"
                 value={this.state.notes}
                 onChange={this.handleNotesChange}/>
-                <select id="customer-booking-selector" onChange={this.handleCustomerChange} value={this.state.customer} >
-                <option disabled value={-1}>Choose a customer...</option>
+                <select id="customer-booking-selector" onChange={this.handleCustomerChange} value={this.state.customerId} >
+                <option disabled value="">Choose a customer...</option>
                 {customerOptions}
                 </select>
-                <select id="seating-booking-selector" onChange={this.handleSeatingChange} value={this.state.seating} >
-                <option disabled value={-1}>Choose a seating...</option>
+                <select id="seating-booking-selector" onChange={this.handleSeatingChange} value={this.state.seatingId} >
+                <option disabled value="" >Choose a seating...</option>
                 {seatingOptions}
                 </select>
 
