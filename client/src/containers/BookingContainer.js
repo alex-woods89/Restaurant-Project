@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import BookingList from '../components/bookingcomponents/BookingList'
 import BookingDetail from '../components/bookingcomponents/BookingDetail'
 import NewBookingForm from '../components/bookingcomponents/NewBookingForm'
+import BookingSearch from '../components/bookingcomponents/BookingSearch'
 
 class BookingContainer extends Component{
    constructor(props) {
@@ -10,7 +11,9 @@ class BookingContainer extends Component{
            bookings: [],
            customers:[],
            seatings: [],
-           selectedBooking: null
+           selectedBooking: null,
+           searchDate:"2019-11-03"
+           
        }
        this.handleBookingSubmit = this.handleBookingSubmit.bind(this)
        this.handleBookingSelected = this.handleBookingSelected.bind(this)
@@ -45,13 +48,26 @@ class BookingContainer extends Component{
     .then(data => this.setState({ bookings: data._embedded.bookings }))
   }
 
+  
+ 
+       
+  
+
   render(){
+    const searchDate = this.state.searchDate
+    const foundBookings = this.state.bookings.filter(booking => booking.date === searchDate)
+    const foundBookingsItems = foundBookings.map((foundBooking, index) => { return <li>{foundBooking.time}</li> })
       return(
           <div>
           <h3>Bookings</h3>
           <NewBookingForm onBookingSubmit = {this.handleBookingSubmit} customers={this.state.customers} seatings ={ this.state.seatings}/>
           <BookingList bookings = {this.state.bookings} onBookingSelected={this.handleBookingSelected}/>
           <BookingDetail booking = {this.state.selectedBooking}/>
+          <ul>
+            {foundBookingsItems}
+          </ul>
+         
+
           </div>
       )
   }
