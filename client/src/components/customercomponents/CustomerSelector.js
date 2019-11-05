@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react';
-
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
 
 class CustomerSelector extends Component {
     constructor(props){
@@ -15,18 +16,17 @@ class CustomerSelector extends Component {
     }
     render(){
         const customerOptions = this.props.customers.map((customer, index) => {
-            return <option value={index} key={index}>{customer.name}</option>
+            return <MenuItem value={index} key={index}>{customer.name}</MenuItem>
         })
         return(
             <Fragment>
-                <label htmlFor="customer-selector" hidden>Select a Customer</label>
-                <select
+                <Select
                 id="customer-selector"
                 onChange={this.handleChange}
                 value={this.state.selectedIndex}>
-                    <option disabled value={-1}>Select a Customer...</option>
+                    <MenuItem disabled value={-1}>Select a Customer...</MenuItem>
                     {customerOptions}
-                </select>
+                </Select>
             </Fragment>
         )
     }
