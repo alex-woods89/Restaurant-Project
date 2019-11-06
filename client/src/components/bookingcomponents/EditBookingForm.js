@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
@@ -15,7 +15,8 @@ class EditBookingForm extends Component {
       partySize: partySize,
       notes: notes,
       customerId: this.props.booking._embedded.customer.id,
-      seatingId: this.props.booking._embedded.seating.id
+      seatingId: this.props.booking._embedded.seating.id,
+      showForm: false
     }
     this.handleDateChange = this.handleDateChange.bind(this)
     this.handleTimeChange = this.handleTimeChange.bind(this)
@@ -24,6 +25,7 @@ class EditBookingForm extends Component {
     this.handleCustomerChange = this.handleCustomerChange.bind(this)
     this.handleSeatingChange = this.handleSeatingChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.toggleForm = this.toggleForm.bind(this)
   }
 
   handleDateChange(event) {
@@ -83,6 +85,10 @@ class EditBookingForm extends Component {
       })
   }
 
+  toggleForm() {
+    this.setState({showForm: true})
+  }
+
   render() {
 
     const customerOptions = this.props.customers.map((customer, index) => {
@@ -94,6 +100,10 @@ class EditBookingForm extends Component {
     })
 
     return (
+      <Fragment>
+      <Button variant="contained" color="secondary" type="submit" onClick={this.toggleForm}>Edit Booking</Button>
+
+      {this.state.showForm &&
       <form className="booking-form" onSubmit={this.handleSubmit}>
         <TextField
           className="inputField"
@@ -141,6 +151,8 @@ class EditBookingForm extends Component {
 
         <Button variant="contained" color="secondary" type="submit">Edit</Button>
       </form>
+      }
+      </Fragment>
     )
   }
 }
