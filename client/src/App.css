@@ -93,18 +93,24 @@
 
 .customer-selector{
   padding-top: 20px;
-  padding-left: 5%;
-padding-right: 5%;
+  /* padding-left: 5%; */
+/* padding-right: 5%; */
   height: 100%; /* Full-height: remove this if you want "auto" height */
   width: 300px;
 }
 .customer-list{
   padding-top: 20px;
   margin: 5%;
-  padding-left: 5%;
+  padding-left: 15%;
 
   height: 100%; /* Full-height: remove this if you want "auto" height */
   width: 300px;
+}
+
+.booking-container{
+  margin-top: 30px;
+  display: flex;
+  display: inline-flex;
 }
 
 

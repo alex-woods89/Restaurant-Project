@@ -77,7 +77,7 @@ class BookingContainer extends Component{
 
 
       return(
-          <div className="container">
+          <div className="booking-container">
             <NewBookingForm onBookingSubmit = {this.handleBookingSubmit} customers={this.state.customers} seatings ={ this.state.seatings}/>
             <h3>Select a Booking </h3>
             <BookingList bookings = {this.state.bookings} onBookingSelected={this.handleBookingSelected}/>
