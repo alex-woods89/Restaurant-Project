@@ -71,6 +71,7 @@
 #home-pic{
   width: 900px;
   padding: 30px;
+  position: relative;
 }
 
 #customer-form{
