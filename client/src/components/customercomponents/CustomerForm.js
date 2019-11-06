@@ -51,7 +51,7 @@ class CustomerForm extends Component {
 
 
         this.props.onCustomerSubmit({name: name, phone: phone, email: email})
-        
+
         this.setState({name: '', phone: '', email: ''});
     }
 

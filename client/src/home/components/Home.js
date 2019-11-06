@@ -1,8 +1,9 @@
 import React from 'react';
 
 const Home = () => (
-    <div>
-        <h4>Home</h4>
+    <div className="container">
+        <h4>Welcome to Godfreya's!</h4>
+        <img id="home-pic" src="http://3.bp.blogspot.com/-zF7_8YHOOT4/VSFOSWHwukI/AAAAAAAADeE/wdbDbs6JbRg/s1600/19.jpg" />
     </div>
 )
 

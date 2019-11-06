@@ -43,6 +43,47 @@
   color: black;
 }
 
-ul{
-  text-decoration-style: none;
+.booking-form{
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 300px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  background-color: white; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
 }
+
+.container{
+  margin-top: 30px;
+}
+
+.detail{
+  margin-top: 30px;
+}
+
+.detail li{
+  padding: 10px;
+}
+
+.highlightedText{
+  color: #e61561;
+}
+
+#home-pic{
+  width: 900px;
+  padding: 30px;
+}
+
+#customer-form{
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 300px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  background-color: white; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+}
+
+
+
+/* ul{
+  text-decoration-style: none;
+} */

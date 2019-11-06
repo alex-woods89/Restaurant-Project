@@ -18,13 +18,13 @@ class NewBookingForm extends Component {
             customerId: "",
             seatingId: ""
         }
-        this.handleDateChange = this.handleDateChange.bind(this) 
-        this.handleTimeChange = this.handleTimeChange.bind(this) 
-        this.handlePartySizeChange = this.handlePartySizeChange.bind(this) 
-        this.handleNotesChange = this.handleNotesChange.bind(this) 
-        this.handleCustomerChange = this.handleCustomerChange.bind(this) 
-        this.handleSeatingChange = this.handleSeatingChange.bind(this) 
-        this.handleSubmit = this.handleSubmit.bind(this) 
+        this.handleDateChange = this.handleDateChange.bind(this)
+        this.handleTimeChange = this.handleTimeChange.bind(this)
+        this.handlePartySizeChange = this.handlePartySizeChange.bind(this)
+        this.handleNotesChange = this.handleNotesChange.bind(this)
+        this.handleCustomerChange = this.handleCustomerChange.bind(this)
+        this.handleSeatingChange = this.handleSeatingChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     handleDateChange(event){
@@ -79,7 +79,7 @@ class NewBookingForm extends Component {
           if(!date|| !time || !partySize || !notes || !customer || !seating){
               return
           }
-  
+
           this.props.onBookingSubmit({ date:date, time:time, partySize:partySize, notes:notes, customer:customer, seating:seating})
           this.setState({date:"", time:"", partySize: null, notes: "", customer: {}, seating: {}})
         })
@@ -95,6 +95,7 @@ class NewBookingForm extends Component {
         return(
             <form className="booking-form" onSubmit={this.handleSubmit}>
                 <TextField
+                className="inputField"
                 type="date"
                 placeholder="Choose a Date"
                 value={this.state.date}
@@ -112,7 +113,7 @@ class NewBookingForm extends Component {
                 placeholder="Number of customers"
                 value={this.state.partySize}
                 onChange={this.handlePartySizeChange}
-                
+
                 />
                 <br></br><br></br>
                 <TextField
@@ -121,7 +122,7 @@ class NewBookingForm extends Component {
                 onChange={this.handleNotesChange}/>
                 <br></br>
                 <InputLabel>Select a Customer</InputLabel>
-                
+
                 <Select id="customer-booking-selector" onChange={this.handleCustomerChange} value={this.state.customerId} >
                 <MenuItem></MenuItem>
                 {customerOptions}
@@ -136,7 +137,7 @@ class NewBookingForm extends Component {
 
                 <Button variant="contained" color="secondary" type="submit">Make A Booking</Button>
 
-              
+
 
 
             </form>

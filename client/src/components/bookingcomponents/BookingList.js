@@ -20,11 +20,10 @@ class BookingList extends Component {
            return <MenuItem value={index} key={index}>{booking.date}  {booking.time}</MenuItem>
         })
 
-        
+
 
     return(
       <Fragment>
-        <label htmlFor="booking-selector" hidden>Select a Booking</label>
         <Select id="booking-selector" onChange={this.handleChange} value={this.state.selectedIndex} >
       <MenuItem disabled value={-1}>Choose a booking...</MenuItem>
       {options}

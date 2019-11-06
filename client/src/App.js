@@ -5,15 +5,13 @@ import Main from './Main';
 function App() {
   return (
     <div className="App">
-      <h1>Restaurant App</h1>
-
-
+      <h1>Godfreya's Kitchen</h1>
       <Main />
     </div>
   );
 
 
-  
+
 }
 
 export default App;
