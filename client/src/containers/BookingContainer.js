@@ -3,6 +3,7 @@ import BookingList from '../components/bookingcomponents/BookingList'
 import BookingDetail from '../components/bookingcomponents/BookingDetail'
 import NewBookingForm from '../components/bookingcomponents/NewBookingForm'
 import BookingSearch from '../components/bookingcomponents/BookingSearch'
+import TextField from '@material-ui/core/TextField'
 
 class BookingContainer extends Component{
    constructor(props) {
@@ -12,11 +13,12 @@ class BookingContainer extends Component{
            customers:[],
            seatings: [],
            selectedBooking: null,
-           searchDate:"2019-11-03"
+           searchDate:""
 
        }
        this.handleBookingSubmit = this.handleBookingSubmit.bind(this)
        this.handleBookingSelected = this.handleBookingSelected.bind(this)
+       this.handleDateSelected = this.handleDateSelected.bind(this)
    }
 
    componentDidMount(){
@@ -48,6 +50,10 @@ class BookingContainer extends Component{
     .then(data => this.setState({ bookings: data._embedded.bookings }))
   }
 
+  handleDateSelected(event){
+    this.setState({searchDate: event.target.value})
+  }
+
 
 
 
@@ -62,6 +68,7 @@ class BookingContainer extends Component{
             <NewBookingForm onBookingSubmit = {this.handleBookingSubmit} customers={this.state.customers} seatings ={ this.state.seatings}/>
             <BookingList bookings = {this.state.bookings} onBookingSelected={this.handleBookingSelected}/>
             <BookingDetail booking = {this.state.selectedBooking}/>
+            <TextField type="date" onChange={this.handleDateSelected}/>
           <ul>
             {foundBookingsItems}
           </ul>
