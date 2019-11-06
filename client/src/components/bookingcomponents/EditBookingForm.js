@@ -81,7 +81,7 @@ class EditBookingForm extends Component {
         }
 
         this.props.onBookingSubmit({ date: date, time: time, partySize: partySize, notes: notes, customer: customer, seating: seating })
-        this.setState({ date: "", time: "", partySize: null, notes: "", customer: {}, seating: {} })
+        this.setState({ date: "", time: "", partySize: null, notes: "", customer: {}, seating: {}, showForm: false })
       })
   }
 
