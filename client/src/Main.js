@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import NavBar from './NavBar';
 import Home from './home/components/Home'
-import Booking from './containers/BookingContainer';
+import BookingContainer from './containers/BookingContainer';
 import ErrorPage from './ErrorPage';
 import CustomerContainer from './containers/CustomerContainer'
 
@@ -25,7 +25,7 @@ class Main extends Component {
                     <NavBar />
                     <Switch>
                         <Route exact path="/" component={Home}/>
-                        <Route path="/bookings" component={Booking}/>
+                        <Route path="/bookings" component={BookingContainer}/>
                         <Route path="/customers" component={CustomerContainer}/>
                         <Route component={ErrorPage}/>
                     </Switch>
