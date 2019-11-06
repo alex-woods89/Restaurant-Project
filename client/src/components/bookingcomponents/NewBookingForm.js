@@ -77,70 +77,120 @@ class NewBookingForm extends Component {
           return
         }
 
-        this.props.onBookingSubmit({ date: date, time: time, partySize: partySize, notes: notes, customer: customer, seating: seating })
-        this.setState({ date: "", time: "", partySize: null, notes: "", customer: {}, seating: {} })
-      })
-  }
+    handleCustomerChange(event){
+        this.setState({customerId: event.target.value})
+    }
 
-  render() {
-    const customerOptions = this.props.customers.map((customer, index) => {
-      return <MenuItem value={customer.id} key={index}>{customer.name}</MenuItem>
-    })
-    const seatingOptions = this.props.seatings.map((seating, index) => {
-      return <MenuItem value={seating.id} key={index}>{seating.tableNumber}</MenuItem>
-    })
-    return (
-      <div className="booking-form">
-        <h3>New Booking Form</h3>
-        < br />
-        <form onSubmit={this.handleSubmit}>
-          <TextField
-            className="inputField"
-            type="date"
-            placeholder="Choose a Date"
-            value={this.state.date}
-            onChange={this.handleDateChange}
-          /><br></br>
-          <TextField
-            type="time"
-            // defaultValue={time}
-            // placeholder={Date.now}
-            value={this.state.time}
-            onChange={this.handleTimeChange}
-          /><br></br>
-          <br></br>
-          <TextField
-            type="number"
-            placeholder="Number of customers"
-            value={this.state.partySize}
-            onChange={this.handlePartySizeChange}
+    handleSeatingChange(event){
+        this.setState({seatingId: event.target.value})
+    }
 
-          />
-          <br></br><br></br>
-          <TextField
-            placeholder="Add notes"
-            value={this.state.notes}
-            onChange={this.handleNotesChange} />
-          <br></br>
-          <InputLabel>Select a Customer</InputLabel>
 
-          <Select id="customer-booking-selector" onChange={this.handleCustomerChange} value={this.state.customerId} >
-            <MenuItem></MenuItem>
-            {customerOptions}
-          </Select>
-          <br></br>
-          <InputLabel>Select a Table</InputLabel>
-          <Select id="seating-booking-selector" onChange={this.handleSeatingChange} value={this.state.seatingId} >
-            <MenuItem >Choose a seating...</MenuItem>
-            {seatingOptions}
-          </Select>
-          <br></br>
+    handleSubmit(event){
+        event.preventDefault();
+        fetch('http://localhost:8080/bookings', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                date: this.state.date,
+                time: this.state.time,
+                partySize: this.state.partySize,
+                notes: this.state.notes,
+                customer: `http://localhost:8080/customers/${this.state.customerId}`,
+                seating: `http://localhost:8080/seatings/${this.state.seatingId}`
+            })
+        })
+        .then(() => {
+          const date = this.state.date.trim();
+          const time = this.state.time.trim();
+          const partySize = this.state.partySize;
+          const notes = this.state.notes.trim();
+          const customer = this.state.customerId;
+          const seating = this.state.seatingId;
+          if(!date|| !time || !partySize || !notes || !customer || !seating){
+              return
+          }
+          
+          this.props.onBookingSubmit({ date:date, time:time, partySize:partySize, notes:notes, customer:customer, seating:seating})
+          this.setState({date:"", time:"", partySize: null, notes: "", customer: {}, seating: {}})
+        })
+    }
 
-          <Button variant="contained" color="secondary" type="submit">Make A Booking</Button>
-        </form>
-      </div>
-    )
-  }
+    render(){
+        const customerOptions = this.props.customers.map((customer, index) => {
+             return <MenuItem value={customer.id} key={index}>{customer.name}</MenuItem>
+          })
+          const seatingOptions = this.props.seatings.map((seating, index) => {
+            return <MenuItem value={seating.id} key={index}>{seating.tableNumber}</MenuItem>
+         })
+        return(
+            <div className="booking-form">
+            <h3>New Booking Form</h3>
+            < br/>
+            <form  onSubmit={this.handleSubmit}>
+                <TextField
+                fullWidth={true}
+                className="inputField"
+                type="date"
+                placeholder="Choose a Date"
+                value={this.state.date}
+                onChange={this.handleDateChange}
+                /><br></br>
+                <TextField
+                fullWidth={true}
+
+                type="time"
+                // defaultValue={time}
+                // placeholder={Date.now}
+                value={this.state.time}
+                onChange={this.handleTimeChange}
+                /><br></br>
+                <br></br>
+                <TextField
+                fullWidth={true}
+
+                type="number"
+                placeholder="Number of customers"
+                value={this.state.partySize}
+                onChange={this.handlePartySizeChange}
+
+                />
+                <br></br><br></br>
+                <TextField
+                fullWidth={true}
+
+                placeholder="Add notes"
+                value={this.state.notes}
+                onChange={this.handleNotesChange}/>
+                <br></br>
+                <InputLabel>Select a Customer</InputLabel>
+
+                <Select
+                fullWidth={true}
+
+                id="customer-booking-selector" onChange={this.handleCustomerChange} value={this.state.customerId} >
+                <MenuItem></MenuItem>
+                {customerOptions}
+                </Select>
+                <br></br>
+                <InputLabel>Select a Table</InputLabel>
+                <Select
+                fullWidth={true}
+
+                 id="seating-booking-selector" onChange={this.handleSeatingChange} value={this.state.seatingId} >
+                <MenuItem >Choose a seating...</MenuItem>
+                {seatingOptions}
+                </Select>
+                <br></br><br/>
+
+                <Button variant="contained" color="secondary" type="submit">Make A Booking</Button>
+            </form>
+            </div>
+        )
+    }
 }
 
 export default NewBookingForm;

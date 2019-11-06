@@ -67,24 +67,26 @@ class BookingContainer extends Component {
     const foundBookings = this.state.bookings.filter(booking => booking.date === searchDate)
     const foundBookingsItems = foundBookings.map((foundBooking, index) => { return <li>{foundBooking._embedded.customer.name}: {foundBooking.time}</li> })
 
-    return (
-      <div className="booking-container">
-        <NewBookingForm onBookingSubmit={this.handleBookingSubmit} customers={this.state.customers} seatings={this.state.seatings} />
-        <div className="view-booking">
-          <h3>View a Booking </h3>
-          <BookingList bookings={this.state.bookings} onBookingSelected={this.handleBookingSelected} />
-        </div>
-        <BookingDetail booking={this.state.selectedBooking} onBookingSubmit={this.handleBookingSubmit} customers={this.state.customers} seatings={this.state.seatings} />
-        <h3 className="view-booking">Find Bookings By Date</h3>
-        <TextField type="date" onChange={this.handleDateSelected} />
-        <ul >
-          {foundBookingsItems}
 
-        </ul>
-        <p className="date-thing">Available seats for selected day : {this.getTotalNumberOfCovers()}</p>
 
-      </div>
-    )
+      return(
+          <div className="booking-container">
+            <NewBookingForm onBookingSubmit = {this.handleBookingSubmit} customers={this.state.customers} seatings ={ this.state.seatings}/>
+            <div className="view-booking">
+            <h3>View a Booking </h3>
+            <BookingList bookings = {this.state.bookings} onBookingSelected={this.handleBookingSelected}/>
+             </div>
+            <BookingDetail booking = {this.state.selectedBooking} onBookingSubmit = {this.handleBookingSubmit} customers={this.state.customers} seatings ={ this.state.seatings}/>
+            <h3 className="view-booking">Find Bookings By Date</h3>
+            <TextField fullWidth={true} type="date" onChange={this.handleDateSelected}/>
+          <ul >
+            {foundBookingsItems}
+
+          </ul>
+          <p className="date-thing">Available seats for selected day : {this.getTotalNumberOfCovers()}</p>
+
+          </div>
+      )
   }
 }
 

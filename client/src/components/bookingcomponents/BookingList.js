@@ -21,13 +21,16 @@ class BookingList extends Component {
       return <MenuItem value={index} key={index}>{booking._embedded.customer.name}  {booking.time}</MenuItem>
     })
 
-    return (
-      <Fragment>
-        <Select id="booking-selector" onChange={this.handleChange} value={this.state.selectedIndex} >
-          <MenuItem disabled value={-1}>Choose a booking...</MenuItem>
-          {options}
-        </Select>
-      </Fragment>
+    return(
+      <div className="booking-selector">
+        <Select
+        
+        fullWidth={true}
+        id="booking-selector" onChange={this.handleChange} value={this.state.selectedIndex} >
+      <MenuItem disabled value={-1}>Choose a booking...</MenuItem>
+      {options}
+    </Select>
+    </div>
     )
   }
 }
