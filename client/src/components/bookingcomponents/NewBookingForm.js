@@ -95,7 +95,10 @@ class NewBookingForm extends Component {
             return <MenuItem value={seating.id} key={index}>{seating.tableNumber}</MenuItem>
          })
         return(
-            <form className="booking-form" onSubmit={this.handleSubmit}>
+            <div className="booking-form">
+            <h3>New Booking Form</h3>
+            < br/>
+            <form  onSubmit={this.handleSubmit}>
                 <TextField
                 className="inputField"
                 type="date"
@@ -140,6 +143,7 @@ class NewBookingForm extends Component {
 
                 <Button variant="contained" color="secondary" type="submit">Make A Booking</Button>
             </form>
+            </div>
         )
     }
 }

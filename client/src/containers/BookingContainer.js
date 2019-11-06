@@ -79,8 +79,11 @@ class BookingContainer extends Component{
       return(
           <div className="container">
             <NewBookingForm onBookingSubmit = {this.handleBookingSubmit} customers={this.state.customers} seatings ={ this.state.seatings}/>
+            <h3>Select a Booking </h3>
             <BookingList bookings = {this.state.bookings} onBookingSelected={this.handleBookingSelected}/>
+            <br/>
             <BookingDetail booking = {this.state.selectedBooking}/>
+            <h3>Select Booking By Date</h3>
             <TextField type="date" onChange={this.handleDateSelected}/>
           <ul>
             {foundBookingsItems}
