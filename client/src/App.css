@@ -51,18 +51,23 @@
   color: black;
 }
 
-.booking-form{
+/* .booking-form{
   height: 100%; /* Full-height: remove this if you want "auto" height */
-  width: 300px; /* Set the width of the sidebar */
+  /* width: 35%; Set the width of the sidebar */
   /* position: fixed;  */
   /* Fixed Sidebar (stay in place on scroll) */
-  background-color: white; /* Black */
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 20px;
-}
+  /* background-color: white; /* Black */
+  /* overflow-x: hidden; Disable horizontal scroll */
+  /* padding-top: 20px;
+  margin-left: 30%; */ *
+/* }  */
 
 .container{
   margin-top: 30px;
+  display: flex;
+  display: inline-flex;
+
+
 }
 
 .detail{
@@ -117,17 +122,66 @@
 #customer-form{
   height: 100%; /* Full-height: remove this if you want "auto" height */
   width: 300px; /* Set the width of the sidebar */
-  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+
   background-color: white; /* Black */
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 20px;
+  padding-bottom: 20px;
+  /* padding-left: 5%; */
+  /* border: black solid 1px; */
 }
 
-a{
+
+.customer-selector{
+  padding-top: 20px;
+  /* padding-left: 5%; */
+/* padding-right: 5%; */
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 300px;
+}
+
+.booking-selector{
+  /* padding-top: 20px;
+  /* padding-left: 5%; */
+/* padding-right: 5%; */
+  /* height: 100%; /* Full-height: remove this if you want "auto" height */
+  /* width: 400px;
+  margin-left: 30%; */
+}
+
+.customer-list{
+  padding-top: 20px;
+  margin: 5%;
+  padding-left: 25%;
+
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 300px;
   text-decoration: none;
-  color: white;
+
 }
 
-/* ul{
-  text-decoration-style: none;
-} */
+.customer-list-item{
+  text-decoration: none;
+}
+
+.booking-container{
+  padding-top: 20px;
+  /* padding-left: 5%; */
+/* padding-right: 5%; */
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 400px;
+  margin-left: 30%;
+
+}
+
+.view-booking{
+  padding-top: 5%;
+}
+
+.date-thing{
+  padding-bottom: 5%;
+}
+
+ul{
+  list-style-type: none;
+}
