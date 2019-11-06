@@ -4,7 +4,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
 
 
 
@@ -88,8 +87,8 @@ class NewBookingForm extends Component {
     }
 
     render(){
-        let today = new Date()
-        let time = today.getTime
+        // let today = new Date()
+        // let time = today.getTime
         const customerOptions = this.props.customers.map((customer, index) => {
              return <MenuItem value={customer.id} key={index}>{customer.name}</MenuItem>
           })
@@ -110,7 +109,7 @@ class NewBookingForm extends Component {
                 /><br></br>
                 <TextField
                 type="time"
-                defaultValue={time}
+                // defaultValue={time}
                 // placeholder={Date.now}
                 value={this.state.time}
                 onChange={this.handleTimeChange}
