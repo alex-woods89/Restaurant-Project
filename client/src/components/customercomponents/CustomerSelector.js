@@ -19,8 +19,10 @@ class CustomerSelector extends Component {
             return <MenuItem value={index} key={index}>{customer.name}</MenuItem>
         })
         return(
+            <div class="customer-selector">
             <Fragment>
                 <Select
+                // fullWidth="true"
                 id="customer-selector"
                 onChange={this.handleChange}
                 value={this.state.selectedIndex}>
@@ -28,6 +30,7 @@ class CustomerSelector extends Component {
                     {customerOptions}
                 </Select>
             </Fragment>
+            </div>
         )
     }
 

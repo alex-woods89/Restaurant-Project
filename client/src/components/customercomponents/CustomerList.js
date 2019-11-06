@@ -10,8 +10,10 @@ const CustomerList = ({customers}) => {
         })
 
     return(
-        <div>
+        <div className="customer-list">
+            
            <table>
+           <h3>All Customers</h3>
                <tbody>{customersNames}</tbody>
            </table>
         </div>
