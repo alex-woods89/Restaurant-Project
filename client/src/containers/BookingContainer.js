@@ -13,7 +13,8 @@ class BookingContainer extends Component{
            customers:[],
            seatings: [],
            selectedBooking: null,
-           searchDate:""
+           searchDate:"",
+           totalCovers: ""
 
        }
        this.handleBookingSubmit = this.handleBookingSubmit.bind(this)
@@ -56,6 +57,17 @@ class BookingContainer extends Component{
 
 
 
+  getTotalNumberOfCovers(){
+    const searchDate = this.state.searchDate
+    const foundBookings = this.state.bookings.filter(booking => booking.date === searchDate)
+    const seatsbookedArray = foundBookings.map((foundBooking) => {return foundBooking.partySize })
+    const reducer = (accumulator, currentValue)=> accumulator + currentValue
+    const totalNumberOfCovers = seatsbookedArray.reduce(reducer, 0)
+    const totalCapacity = 26
+    const availableSeats = totalCapacity - totalNumberOfCovers
+    return availableSeats;
+    // this.setState({totalCovers: totalNumberOfCovers }) 
+   }
 
 
 
@@ -63,6 +75,9 @@ class BookingContainer extends Component{
     const searchDate = this.state.searchDate
     const foundBookings = this.state.bookings.filter(booking => booking.date === searchDate)
     const foundBookingsItems = foundBookings.map((foundBooking, index) => { return <li>{foundBooking._embedded.customer.name}: {foundBooking.time}</li> })
+   
+   
+  
       return(
           <div className="container">
             <NewBookingForm onBookingSubmit = {this.handleBookingSubmit} customers={this.state.customers} seatings ={ this.state.seatings}/>
@@ -71,7 +86,9 @@ class BookingContainer extends Component{
             <TextField type="date" onChange={this.handleDateSelected}/>
           <ul>
             {foundBookingsItems}
+            
           </ul>
+          <p>Available seats for selected day : {this.getTotalNumberOfCovers()}</p>
 
           </div>
       )
