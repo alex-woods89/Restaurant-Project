@@ -77,15 +77,18 @@ class BookingContainer extends Component{
       return(
           <div className="booking-container">
             <NewBookingForm onBookingSubmit = {this.handleBookingSubmit} customers={this.state.customers} seatings ={ this.state.seatings}/>
-            <h3>Select a Booking </h3>
+            <div className="view-booking">
+            <h3>View a Booking </h3>
             <BookingList bookings = {this.state.bookings} onBookingSelected={this.handleBookingSelected}/>
+             </div>
             <BookingDetail booking = {this.state.selectedBooking} onBookingSubmit = {this.handleBookingSubmit} customers={this.state.customers} seatings ={ this.state.seatings}/>
+            <h3 className="view-booking">Find Bookings By Date</h3>
             <TextField type="date" onChange={this.handleDateSelected}/>
-          <ul>
+          <ul >
             {foundBookingsItems}
 
           </ul>
-          <p>Available seats for selected day : {this.getTotalNumberOfCovers()}</p>
+          <p className="date-thing">Available seats for selected day : {this.getTotalNumberOfCovers()}</p>
 
           </div>
       )

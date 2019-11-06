@@ -35,6 +35,18 @@ public class DataLoader implements ApplicationRunner {
         Customer customer2 = new Customer("Godfreya Richards", "godfreya@example.com", "1098 765 4321");
         customerRepository.save(customer2);
 
+        Customer customer3 = new Customer("Alex Woods", "email@fakeemail.com", "0131 654 234");
+        customerRepository.save(customer3);
+
+        Customer customer4 = new Customer("Joe Cooper", "JoesEmail@gmail.com", "077654237");
+        customerRepository.save(customer4);
+
+        Customer customer5 = new Customer("Davide Campagna", "superemail@aol.com", "076543123");
+        customerRepository.save(customer5);
+
+        Customer customer6 = new Customer(" Cameron Pellett", "Camemail@ask.com", " 8973424354325");
+        customerRepository.save(customer6);
+
         Seating seating1 = new Seating(2, 1);
         seatingRepository.save(seating1);
 
