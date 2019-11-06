@@ -3,19 +3,19 @@ import React from 'react'
 const CustomerList = ({customers}) => {
 
         const customersNames = customers.map((customer, index) => {
-            return <tr key={index}>
-            <td>{customer.name}</td>
+            return <li className="customer-list-item"> {customer.name}</li>
+             
 
-            </tr>
+            
         })
+
+        const text = "All the Customers"
 
     return(
         <div className="customer-list">
-            
-           <table>
-               <thead className="thead">All the Customers</thead>
-               <tbody>{customersNames}</tbody>
-           </table>
+               {text}
+               <ul>{customersNames}</ul>
+           
         </div>
     )
 }

@@ -101,10 +101,16 @@
 .customer-list{
   padding-top: 20px;
   margin: 5%;
-  padding-left: 15%;
+  padding-left: 25%;
 
   height: 100%; /* Full-height: remove this if you want "auto" height */
   width: 300px;
+  text-decoration: none;
+
+}
+
+.customer-list-item{
+  text-decoration: none;
 }
 
 .booking-container{
@@ -114,12 +120,10 @@
   justify-content: center;
 }
 
-.thead{
-  font-weight: bold;
-}
 
 
 
-/* ul{
+
+ul{
   text-decoration-style: none;
-} */
+}
