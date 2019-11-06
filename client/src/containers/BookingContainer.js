@@ -83,7 +83,7 @@ class BookingContainer extends Component{
              </div>
             <BookingDetail booking = {this.state.selectedBooking} onBookingSubmit = {this.handleBookingSubmit} customers={this.state.customers} seatings ={ this.state.seatings}/>
             <h3 className="view-booking">Find Bookings By Date</h3>
-            <TextField type="date" onChange={this.handleDateSelected}/>
+            <TextField fullWidth={true} type="date" onChange={this.handleDateSelected}/>
           <ul >
             {foundBookingsItems}
 

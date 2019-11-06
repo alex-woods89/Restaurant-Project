@@ -23,12 +23,15 @@ class BookingList extends Component {
 
 
     return(
-      <Fragment>
-        <Select id="booking-selector" onChange={this.handleChange} value={this.state.selectedIndex} >
+      <div className="booking-selector">
+        <Select
+        
+        fullWidth={true}
+        id="booking-selector" onChange={this.handleChange} value={this.state.selectedIndex} >
       <MenuItem disabled value={-1}>Choose a booking...</MenuItem>
       {options}
     </Select>
-    </Fragment>
+    </div>
     )
          }
   }

@@ -99,6 +99,7 @@ class NewBookingForm extends Component {
             < br/>
             <form  onSubmit={this.handleSubmit}>
                 <TextField
+                fullWidth={true}
                 className="inputField"
                 type="date"
                 placeholder="Choose a Date"
@@ -106,6 +107,8 @@ class NewBookingForm extends Component {
                 onChange={this.handleDateChange}
                 /><br></br>
                 <TextField
+                fullWidth={true}
+
                 type="time"
                 // defaultValue={time}
                 // placeholder={Date.now}
@@ -114,6 +117,8 @@ class NewBookingForm extends Component {
                 /><br></br>
                 <br></br>
                 <TextField
+                fullWidth={true}
+
                 type="number"
                 placeholder="Number of customers"
                 value={this.state.partySize}
@@ -122,23 +127,31 @@ class NewBookingForm extends Component {
                 />
                 <br></br><br></br>
                 <TextField
+                fullWidth={true}
+
                 placeholder="Add notes"
                 value={this.state.notes}
                 onChange={this.handleNotesChange}/>
                 <br></br>
                 <InputLabel>Select a Customer</InputLabel>
 
-                <Select id="customer-booking-selector" onChange={this.handleCustomerChange} value={this.state.customerId} >
+                <Select
+                fullWidth={true}
+
+                id="customer-booking-selector" onChange={this.handleCustomerChange} value={this.state.customerId} >
                 <MenuItem></MenuItem>
                 {customerOptions}
                 </Select>
                 <br></br>
                 <InputLabel>Select a Table</InputLabel>
-                <Select id="seating-booking-selector" onChange={this.handleSeatingChange} value={this.state.seatingId} >
+                <Select
+                fullWidth={true}
+
+                 id="seating-booking-selector" onChange={this.handleSeatingChange} value={this.state.seatingId} >
                 <MenuItem >Choose a seating...</MenuItem>
                 {seatingOptions}
                 </Select>
-                <br></br>
+                <br></br><br/>
 
                 <Button variant="contained" color="secondary" type="submit">Make A Booking</Button>
             </form>
