@@ -100,6 +100,8 @@ public class Booking {
     }
 
     public void setSeating(Seating seating) {
-        this.seating = seating;
+        if (this.partySize <= seating.getCapacity()) {
+            this.seating = seating;
+        }
     }
 }
