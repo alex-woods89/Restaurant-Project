@@ -18,7 +18,7 @@ const BookingDetail = ({booking, onBookingSubmit}) => {
                 <li className="highlightedText">Special Requests: {booking.notes}</li>
             </ul>
             <Button variant="contained" color="secondary" type="submit">Edit Booking</Button>
-        <EditBookingForm booking={booking} onBookingSubmit = {onBookingSubmit}/>
+        <EditBookingForm booking={booking} onBookingSubmit={onBookingSubmit}/>
         </div>
     )
 
