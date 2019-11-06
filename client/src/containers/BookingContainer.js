@@ -3,6 +3,7 @@ import BookingList from '../components/bookingcomponents/BookingList'
 import BookingDetail from '../components/bookingcomponents/BookingDetail'
 import NewBookingForm from '../components/bookingcomponents/NewBookingForm'
 import BookingSearch from '../components/bookingcomponents/BookingSearch'
+import TextField from '@material-ui/core/TextField'
 
 class BookingContainer extends Component{
    constructor(props) {
@@ -12,11 +13,13 @@ class BookingContainer extends Component{
            customers:[],
            seatings: [],
            selectedBooking: null,
-           searchDate:"2019-11-03"
+           searchDate:"",
+           totalCovers: ""
 
        }
        this.handleBookingSubmit = this.handleBookingSubmit.bind(this)
        this.handleBookingSelected = this.handleBookingSelected.bind(this)
+       this.handleDateSelected = this.handleDateSelected.bind(this)
    }
 
    componentDidMount(){
@@ -33,8 +36,6 @@ class BookingContainer extends Component{
     .then(data => this.setState({ bookings: data._embedded.bookings }))
   }
 
-
-
   handleBookingSelected(index){
     const booking = this.state.bookings[index]
     fetch(`http://localhost:8080/bookings/${booking.id}`)
@@ -48,23 +49,44 @@ class BookingContainer extends Component{
     .then(data => this.setState({ bookings: data._embedded.bookings }))
   }
 
+  handleDateSelected(event){
+    this.setState({searchDate: event.target.value})
+  }
 
 
+
+  getTotalNumberOfCovers(){
+    const searchDate = this.state.searchDate
+    const foundBookings = this.state.bookings.filter(booking => booking.date === searchDate)
+    const seatsbookedArray = foundBookings.map((foundBooking) => {return foundBooking.partySize })
+    const reducer = (accumulator, currentValue)=> accumulator + currentValue
+    const totalNumberOfCovers = seatsbookedArray.reduce(reducer, 0)
+    const totalCapacity = 26
+    const availableSeats = totalCapacity - totalNumberOfCovers
+    return availableSeats;
+    // this.setState({totalCovers: totalNumberOfCovers })
+   }
 
 
 
   render(){
     const searchDate = this.state.searchDate
     const foundBookings = this.state.bookings.filter(booking => booking.date === searchDate)
-    const foundBookingsItems = foundBookings.map((foundBooking, index) => { return <li>{foundBooking.time}</li> })
+    const foundBookingsItems = foundBookings.map((foundBooking, index) => { return <li>{foundBooking._embedded.customer.name}: {foundBooking.time}</li> })
+
+
+
       return(
           <div className="container">
             <NewBookingForm onBookingSubmit = {this.handleBookingSubmit} customers={this.state.customers} seatings ={ this.state.seatings}/>
             <BookingList bookings = {this.state.bookings} onBookingSelected={this.handleBookingSelected}/>
             <BookingDetail booking = {this.state.selectedBooking}/>
+            <TextField type="date" onChange={this.handleDateSelected}/>
           <ul>
             {foundBookingsItems}
+
           </ul>
+          <p>Available seats for selected day : {this.getTotalNumberOfCovers()}</p>
 
           </div>
       )

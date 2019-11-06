@@ -17,7 +17,7 @@ class BookingList extends Component {
         }
          render(){
         const options = this.props.bookings.map((booking, index) => {
-           return <MenuItem value={index} key={index}>{booking.date}  {booking.time}</MenuItem>
+           return <MenuItem value={index} key={index}>{booking._embedded.customer.name}  {booking.time}</MenuItem>
         })
 
 

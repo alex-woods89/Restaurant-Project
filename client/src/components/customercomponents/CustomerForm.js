@@ -63,16 +63,19 @@ class CustomerForm extends Component {
                 placeholder="Your Name"
                 value={this.state.name}
                 onChange={this.handleNameChange}
+                required
                 />
                 <input
                 type="text" placeholder="Phone Number"
                 value={this.state.phone}
                 onChange={this.handlePhoneChange}
+                required
                 />
                 <input
                 type="text" placeholder="Email"
                 value={this.state.email}
                 onChange={this.handleEmailChange}
+                required
                 />
                 <Button variant="contained" color="secondary"
                 type="submit">

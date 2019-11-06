@@ -79,13 +79,15 @@ class NewBookingForm extends Component {
           if(!date|| !time || !partySize || !notes || !customer || !seating){
               return
           }
-
+          
           this.props.onBookingSubmit({ date:date, time:time, partySize:partySize, notes:notes, customer:customer, seating:seating})
           this.setState({date:"", time:"", partySize: null, notes: "", customer: {}, seating: {}})
         })
     }
 
     render(){
+        let today = new Date()
+        let time = today.getTime
         const customerOptions = this.props.customers.map((customer, index) => {
              return <MenuItem value={customer.id} key={index}>{customer.name}</MenuItem>
           })
@@ -103,7 +105,8 @@ class NewBookingForm extends Component {
                 /><br></br>
                 <TextField
                 type="time"
-                placeholder="Choose a Time"
+                defaultValue={time}
+                // placeholder={Date.now}
                 value={this.state.time}
                 onChange={this.handleTimeChange}
                 /><br></br>
@@ -136,10 +139,6 @@ class NewBookingForm extends Component {
                 <br></br>
 
                 <Button variant="contained" color="secondary" type="submit">Make A Booking</Button>
-
-
-
-
             </form>
         )
     }
