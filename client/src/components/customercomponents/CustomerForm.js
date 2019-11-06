@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 class CustomerForm extends Component {
     constructor(props){
@@ -58,25 +59,31 @@ class CustomerForm extends Component {
     render(){
         return(
             <form className="customer-form" onSubmit={this.handleSubmit}>
-                <input
+                <TextField
+                fullWidth={true}
                 type="text"
                 placeholder="Your Name"
                 value={this.state.name}
                 onChange={this.handleNameChange}
                 required
                 />
-                <input
+                <TextField
+                fullWidth={true}
+
                 type="text" placeholder="Phone Number"
                 value={this.state.phone}
                 onChange={this.handlePhoneChange}
                 required
                 />
-                <input
+                <TextField
+                fullWidth={true}
+
                 type="text" placeholder="Email"
                 value={this.state.email}
                 onChange={this.handleEmailChange}
                 required
                 />
+                <br/><br/>
                 <Button variant="contained" color="secondary"
                 type="submit">
                 Add Customer

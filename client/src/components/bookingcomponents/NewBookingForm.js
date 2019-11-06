@@ -7,6 +7,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 
 
 
+
 class NewBookingForm extends Component {
     constructor(props){
         super(props);
@@ -86,8 +87,6 @@ class NewBookingForm extends Component {
     }
 
     render(){
-        let today = new Date()
-        let time = today.getTime
         const customerOptions = this.props.customers.map((customer, index) => {
              return <MenuItem value={customer.id} key={index}>{customer.name}</MenuItem>
           })
@@ -95,7 +94,10 @@ class NewBookingForm extends Component {
             return <MenuItem value={seating.id} key={index}>{seating.tableNumber}</MenuItem>
          })
         return(
-            <form className="booking-form" onSubmit={this.handleSubmit}>
+            <div className="booking-form">
+            <h3>New Booking Form</h3>
+            < br/>
+            <form  onSubmit={this.handleSubmit}>
                 <TextField
                 className="inputField"
                 type="date"
@@ -105,7 +107,7 @@ class NewBookingForm extends Component {
                 /><br></br>
                 <TextField
                 type="time"
-                defaultValue={time}
+                // defaultValue={time}
                 // placeholder={Date.now}
                 value={this.state.time}
                 onChange={this.handleTimeChange}
@@ -140,6 +142,7 @@ class NewBookingForm extends Component {
 
                 <Button variant="contained" color="secondary" type="submit">Make A Booking</Button>
             </form>
+            </div>
         )
     }
 }

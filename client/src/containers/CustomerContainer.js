@@ -3,7 +3,6 @@ import CustomerDetail from '../components/customercomponents/CustomerDetail'
 import CustomerList from '../components/customercomponents/CustomerList'
 import CustomerForm from '../components/customercomponents/CustomerForm'
 import CustomerSelector from '../components/customercomponents/CustomerSelector'
-import FoundBooking from '../components/bookingcomponents/FoundBooking';
 
 class CustomerContainer extends Component{
   constructor(props){

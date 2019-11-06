@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import BookingList from '../components/bookingcomponents/BookingList'
 import BookingDetail from '../components/bookingcomponents/BookingDetail'
 import NewBookingForm from '../components/bookingcomponents/NewBookingForm'
-import BookingSearch from '../components/bookingcomponents/BookingSearch'
 import TextField from '@material-ui/core/TextField'
 
 class BookingContainer extends Component{
@@ -64,7 +63,6 @@ class BookingContainer extends Component{
     const totalCapacity = 26
     const availableSeats = totalCapacity - totalNumberOfCovers
     return availableSeats;
-    // this.setState({totalCovers: totalNumberOfCovers })
    }
 
 
@@ -77,8 +75,9 @@ class BookingContainer extends Component{
 
 
       return(
-          <div className="container">
+          <div className="booking-container">
             <NewBookingForm onBookingSubmit = {this.handleBookingSubmit} customers={this.state.customers} seatings ={ this.state.seatings}/>
+            <h3>Select a Booking </h3>
             <BookingList bookings = {this.state.bookings} onBookingSelected={this.handleBookingSelected}/>
             <BookingDetail booking = {this.state.selectedBooking} onBookingSubmit = {this.handleBookingSubmit} customers={this.state.customers} seatings ={ this.state.seatings}/>
             <TextField type="date" onChange={this.handleDateSelected}/>
