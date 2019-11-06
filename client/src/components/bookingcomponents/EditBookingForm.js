@@ -14,6 +14,8 @@ class EditBookingForm extends Component {
       time: time,
       partySize: partySize,
       notes: notes,
+      customerId: this.props.booking._embedded.customer.id,
+      seatingId: this.props.booking._embedded.seating.id
     }
     this.handleDateChange = this.handleDateChange.bind(this)
     this.handleTimeChange = this.handleTimeChange.bind(this)
@@ -83,7 +85,7 @@ handleSeatingChange(event){
 
           <br></br>
 
-          <Button variant="contained" color="secondary" type="submit">Make A Booking</Button>
+          <Button variant="contained" color="secondary" type="submit">Edit</Button>
         </form>
     )
   }

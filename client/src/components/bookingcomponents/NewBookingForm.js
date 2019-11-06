@@ -79,7 +79,7 @@ class NewBookingForm extends Component {
           if(!date|| !time || !partySize || !notes || !customer || !seating){
               return
           }
-
+          
           this.props.onBookingSubmit({ date:date, time:time, partySize:partySize, notes:notes, customer:customer, seating:seating})
           this.setState({date:"", time:"", partySize: null, notes: "", customer: {}, seating: {}})
         })

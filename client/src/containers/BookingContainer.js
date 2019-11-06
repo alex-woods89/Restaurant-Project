@@ -33,8 +33,6 @@ class BookingContainer extends Component{
     .then(data => this.setState({ bookings: data._embedded.bookings }))
   }
 
-
-
   handleBookingSelected(index){
     const booking = this.state.bookings[index]
     fetch(`http://localhost:8080/bookings/${booking.id}`)
@@ -48,11 +46,6 @@ class BookingContainer extends Component{
     .then(data => this.setState({ bookings: data._embedded.bookings }))
   }
 
-
-
-
-
-
   render(){
     const searchDate = this.state.searchDate
     const foundBookings = this.state.bookings.filter(booking => booking.date === searchDate)
@@ -61,7 +54,7 @@ class BookingContainer extends Component{
           <div className="container">
             <NewBookingForm onBookingSubmit = {this.handleBookingSubmit} customers={this.state.customers} seatings ={ this.state.seatings}/>
             <BookingList bookings = {this.state.bookings} onBookingSelected={this.handleBookingSelected}/>
-            <BookingDetail booking = {this.state.selectedBooking}/>
+            <BookingDetail booking = {this.state.selectedBooking} onBookingSubmit = {this.handleBookingSubmit}/>
           <ul>
             {foundBookingsItems}
           </ul>
