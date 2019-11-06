@@ -2,7 +2,7 @@ import React from 'react'
 import EditBookingForm from './EditBookingForm'
 import Button from '@material-ui/core/Button';
 
-const BookingDetail = ({booking, onBookingSubmit}) => {
+const BookingDetail = ({booking, onBookingSubmit, customers, seatings}) => {
     if(!booking) return null;
     return (
 
@@ -18,7 +18,7 @@ const BookingDetail = ({booking, onBookingSubmit}) => {
                 <li className="highlightedText">Special Requests: {booking.notes}</li>
             </ul>
             <Button variant="contained" color="secondary" type="submit">Edit Booking</Button>
-        <EditBookingForm booking={booking} onBookingSubmit={onBookingSubmit}/>
+        <EditBookingForm booking={booking} onBookingSubmit={onBookingSubmit} customers={customers} seatings ={seatings}/>
         </div>
     )
 

@@ -52,7 +52,7 @@ class EditBookingForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    fetch(`http://localhost:8080/bookings/${ this.props.booking.id}`, {
+    fetch(`http://localhost:8080/bookings/${this.props.booking.id}`, {
       method: 'PATCH',
       headers: {
         Accept: 'application/json',
@@ -63,8 +63,8 @@ class EditBookingForm extends Component {
         time: this.state.time,
         partySize: this.state.partySize,
         notes: this.state.notes,
-        customer: `http://localhost:8080/customers/${ this.state.customerId }`,
-        seating: `http://localhost:8080/seatings/${ this.state.seatingId }`
+        customer: `http://localhost:8080/customers/${this.state.customerId}`,
+        seating: `http://localhost:8080/seatings/${this.state.seatingId}`
       })
     })
       .then(() => {
@@ -84,6 +84,15 @@ class EditBookingForm extends Component {
   }
 
   render() {
+
+    const customerOptions = this.props.customers.map((customer, index) => {
+      return <MenuItem value={customer.id} key={index}>{customer.name}</MenuItem>
+    })
+
+    const seatingOptions = this.props.seatings.map((seating, index) => {
+      return <MenuItem value={seating.id} key={index}>{seating.tableNumber}</MenuItem>
+    })
+
     return (
       <form className="booking-form" onSubmit={this.handleSubmit}>
         <TextField
@@ -116,6 +125,18 @@ class EditBookingForm extends Component {
         <InputLabel>Select a Customer</InputLabel>
 
 
+        <br></br>
+
+        <Select id="customer-booking-selector" onChange={this.handleCustomerChange} value={this.state.customerId} >
+          <MenuItem></MenuItem>
+          {customerOptions}
+        </Select>
+        <br></br>
+        <InputLabel>Select a Table</InputLabel>
+        <Select id="seating-booking-selector" onChange={this.handleSeatingChange} value={this.state.seatingId} >
+          <MenuItem >Choose a seating...</MenuItem>
+          {seatingOptions}
+        </Select>
         <br></br>
 
         <Button variant="contained" color="secondary" type="submit">Edit</Button>
