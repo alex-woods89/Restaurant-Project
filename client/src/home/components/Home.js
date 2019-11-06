@@ -14,7 +14,7 @@ const Home = () => (
             color="secondary"
             type="submit"
             >
-            <a href="/customers">
+            <a href="/bookings">
             Make a reservation
             </a>
           </Button>
