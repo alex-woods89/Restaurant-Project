@@ -49,7 +49,7 @@ class BookingContainer extends Component{
   render(){
     const searchDate = this.state.searchDate
     const foundBookings = this.state.bookings.filter(booking => booking.date === searchDate)
-    const foundBookingsItems = foundBookings.map((foundBooking, index) => { return <li>{foundBooking.time}</li> })
+    const foundBookingsItems = foundBookings.map((foundBooking, index) => { return <li key={index}>{foundBooking.time}</li> })
       return(
           <div className="container">
             <NewBookingForm onBookingSubmit = {this.handleBookingSubmit} customers={this.state.customers} seatings ={ this.state.seatings}/>
