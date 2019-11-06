@@ -96,6 +96,11 @@
   margin: 50px;
 }
 
+#home-reservation-btn a{
+  color: white;
+  text-decoration: none;
+}
+
 #home-images {
   position:relative;
   height:281px;
