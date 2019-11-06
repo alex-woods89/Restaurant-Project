@@ -124,7 +124,7 @@ class NewBookingForm extends Component {
              return <MenuItem value={customer.id} key={index}>{customer.name}</MenuItem>
           })
           const seatingOptions = this.props.seatings.map((seating, index) => {
-            return <MenuItem value={seating.id} key={index}>{seating.tableNumber}</MenuItem>
+            return <MenuItem value={seating.id} key={index}>Table: {seating.tableNumber} Seats: {seating.capacity}</MenuItem>
          })
         return(
             <div className="booking-form">
