@@ -3,7 +3,7 @@ import React from 'react'
 const CustomerList = ({ customers }) => {
 
   const customersNames = customers.map((customer, index) => {
-    return <p className="customer-list-item"> {customer.name}</p>
+    return <p className="customer-list-item" key={index}> {customer.name}</p>
   })
 
   return (
