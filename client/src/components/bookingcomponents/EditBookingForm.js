@@ -86,7 +86,7 @@ class EditBookingForm extends Component {
   }
 
   toggleForm() {
-    this.setState({showForm: true})
+    this.setState({ showForm: true })
   }
 
   render() {
@@ -101,57 +101,53 @@ class EditBookingForm extends Component {
 
     return (
       <Fragment>
-      <Button variant="contained" color="secondary" type="submit" onClick={this.toggleForm}>Edit Booking</Button>
+        <Button variant="contained" color="secondary" type="submit" onClick={this.toggleForm}>Edit Booking</Button>
 
-      {this.state.showForm &&
-      <form className="booking-form" onSubmit={this.handleSubmit}>
-        <TextField
-          className="inputField"
-          type="date"
-          placeholder="Choose a Date"
-          value={this.state.date}
-          onChange={this.handleDateChange}
-        /><br></br>
-        <TextField
-          type="time"
-          placeholder="Choose a Time"
-          value={this.state.time}
-          onChange={this.handleTimeChange}
-        /><br></br>
-        <br></br>
-        <TextField
-          type="number"
-          placeholder="Number of customers"
-          value={this.state.partySize}
-          onChange={this.handlePartySizeChange}
+        {this.state.showForm &&
+          <form className="booking-form" onSubmit={this.handleSubmit}>
+            <TextField
+              className="inputField"
+              type="date"
+              placeholder="Choose a Date"
+              value={this.state.date}
+              onChange={this.handleDateChange}
+            /><br></br>
+            <TextField
+              type="time"
+              placeholder="Choose a Time"
+              value={this.state.time}
+              onChange={this.handleTimeChange}
+            /><br></br>
+            <br></br>
+            <TextField
+              type="number"
+              placeholder="Number of customers"
+              value={this.state.partySize}
+              onChange={this.handlePartySizeChange}
 
-        />
-        <br></br><br></br>
-        <TextField
-          placeholder="Add notes"
-          value={this.state.notes}
-          onChange={this.handleNotesChange} />
-        <br></br>
-        <InputLabel>Select a Customer</InputLabel>
-
-
-        <br></br>
-
-        <Select id="customer-booking-selector" onChange={this.handleCustomerChange} value={this.state.customerId} >
-          <MenuItem></MenuItem>
-          {customerOptions}
-        </Select>
-        <br></br>
-        <InputLabel>Select a Table</InputLabel>
-        <Select id="seating-booking-selector" onChange={this.handleSeatingChange} value={this.state.seatingId} >
-          <MenuItem >Choose a seating...</MenuItem>
-          {seatingOptions}
-        </Select>
-        <br></br>
-
-        <Button variant="contained" color="secondary" type="submit">Edit</Button>
-      </form>
-      }
+            />
+            <br></br><br></br>
+            <TextField
+              placeholder="Add notes"
+              value={this.state.notes}
+              onChange={this.handleNotesChange} />
+            <br></br>
+            <InputLabel>Select a Customer</InputLabel>
+            <br></br>
+            <Select id="customer-booking-selector" onChange={this.handleCustomerChange} value={this.state.customerId} >
+              <MenuItem></MenuItem>
+              {customerOptions}
+            </Select>
+            <br></br>
+            <InputLabel>Select a Table</InputLabel>
+            <Select id="seating-booking-selector" onChange={this.handleSeatingChange} value={this.state.seatingId} >
+              <MenuItem >Choose a seating...</MenuItem>
+              {seatingOptions}
+            </Select>
+            <br></br>
+            <Button variant="contained" color="secondary" type="submit">Edit</Button>
+          </form>
+        }
       </Fragment>
     )
   }

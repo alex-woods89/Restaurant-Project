@@ -16,10 +16,10 @@ class BookingList extends Component {
     this.props.onBookingSelected(event.target.value);
   }
   render() {
+
     const options = this.props.bookings.map((booking, index) => {
       return <MenuItem value={index} key={index}>{booking._embedded.customer.name}  {booking.time}</MenuItem>
     })
-
 
     return (
       <Fragment>
