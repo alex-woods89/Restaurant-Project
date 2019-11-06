@@ -19,7 +19,6 @@ const BookingDetail = ({ booking, onBookingSubmit, customers, seatings }) => {
       </ul>
     </div>
   )
-
 }
 
 export default BookingDetail
