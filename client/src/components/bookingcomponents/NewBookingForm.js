@@ -87,8 +87,6 @@ class NewBookingForm extends Component {
     }
 
     render(){
-        // let today = new Date()
-        // let time = today.getTime
         const customerOptions = this.props.customers.map((customer, index) => {
              return <MenuItem value={customer.id} key={index}>{customer.name}</MenuItem>
           })

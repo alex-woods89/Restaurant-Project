@@ -111,6 +111,7 @@
   margin-top: 30px;
   display: flex;
   display: inline-flex;
+  justify-content: center;
 }
 
 
