@@ -13,7 +13,7 @@ const CustomerList = ({customers}) => {
         <div className="customer-list">
             
            <table>
-           <h3>All Customers</h3>
+               <thead className="thead">All the Customers</thead>
                <tbody>{customersNames}</tbody>
            </table>
         </div>

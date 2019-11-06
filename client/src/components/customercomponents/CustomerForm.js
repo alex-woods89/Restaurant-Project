@@ -60,7 +60,7 @@ class CustomerForm extends Component {
         return(
             <form className="customer-form" onSubmit={this.handleSubmit}>
                 <TextField
-                fullWidth="true"
+                fullWidth={true}
                 type="text"
                 placeholder="Your Name"
                 value={this.state.name}
@@ -68,7 +68,7 @@ class CustomerForm extends Component {
                 required
                 />
                 <TextField
-                fullWidth="true"
+                fullWidth={true}
 
                 type="text" placeholder="Phone Number"
                 value={this.state.phone}
@@ -76,7 +76,7 @@ class CustomerForm extends Component {
                 required
                 />
                 <TextField
-                fullWidth="true"
+                fullWidth={true}
 
                 type="text" placeholder="Email"
                 value={this.state.email}

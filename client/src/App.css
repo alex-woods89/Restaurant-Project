@@ -114,6 +114,10 @@
   justify-content: center;
 }
 
+.thead{
+  font-weight: bold;
+}
+
 
 
 /* ul{

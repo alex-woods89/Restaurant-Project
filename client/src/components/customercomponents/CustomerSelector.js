@@ -19,7 +19,7 @@ class CustomerSelector extends Component {
             return <MenuItem value={index} key={index}>{customer.name}</MenuItem>
         })
         return(
-            <div class="customer-selector">
+            <div className="customer-selector">
             <Fragment>
                 <Select
                 // fullWidth="true"
