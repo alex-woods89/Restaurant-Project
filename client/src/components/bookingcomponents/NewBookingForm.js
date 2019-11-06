@@ -136,10 +136,6 @@ class NewBookingForm extends Component {
                 <br></br>
 
                 <Button variant="contained" color="secondary" type="submit">Make A Booking</Button>
-
-
-
-
             </form>
         )
     }

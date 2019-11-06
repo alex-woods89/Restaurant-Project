@@ -15,7 +15,38 @@ class EditBookingForm extends Component {
       partySize: partySize,
       notes: notes,
     }
-  }
+    this.handleDateChange = this.handleDateChange.bind(this)
+    this.handleTimeChange = this.handleTimeChange.bind(this)
+    this.handlePartySizeChange = this.handlePartySizeChange.bind(this)
+    this.handleNotesChange = this.handleNotesChange.bind(this)
+    this.handleCustomerChange = this.handleCustomerChange.bind(this)
+    this.handleSeatingChange = this.handleSeatingChange.bind(this)
+    // this.handleSubmit = this.handleSubmit.bind(this)
+}
+
+handleDateChange(event){
+    this.setState({date: event.target.value})
+}
+
+handleTimeChange(event){
+    this.setState({time: event.target.value})
+}
+
+handlePartySizeChange(event){
+    this.setState({partySize: event.target.value})
+}
+
+handleNotesChange(event){
+    this.setState({notes: event.target.value})
+}
+
+handleCustomerChange(event){
+    this.setState({customerId: event.target.value})
+}
+
+handleSeatingChange(event){
+    this.setState({seatingId: event.target.value})
+}
 
   render(){
     return(
